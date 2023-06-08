@@ -16,7 +16,7 @@ class Facebook {
     this.users = [];
     this.loggedIn = false;
     this.ADDFEED = [];
-    this.friends = [];
+    this.friends = ['AMIT'];
   }
 
   signup() {
@@ -134,8 +134,25 @@ Caption : STUNNING DOG`
   }
 
   addFriend() {
-    const friendUsername = promptSync('Enter the username of the friend you want to add: ');
-   
+    console.log("Your Friend List :")
+
+    for(let friend of this.friends){
+      console.log(friend)
+    }
+    const friendUsername = promptSync('Enter the username of the friend you want to add or press Q to feed menu : ');
+
+    if(this.friends.includes(friendUsername)){
+      console.log('Already your friend')
+      return
+    }
+    if(friendUsername === 'Q'){
+      this.showFeed();
+    }
+    else{
+      this.friends.push(friendUsername);
+            console.log(`Added ${friendUsername} to your friend list`);
+            this.showFeed();
+    }
   }
   post() {
 
